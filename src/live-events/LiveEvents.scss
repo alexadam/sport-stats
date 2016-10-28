@@ -1,0 +1,138 @@
+
+$fontSize: 14px;
+$textColor: rgba(255,255,255,1);
+$teamNameColor: black;
+$headerBackgrounfColor: #D3D9E5;
+$headerBackgrounfColor: rgba(#D3D9E5, 0.25);
+$headerShadow: 0 0 5px 7px rgba(0, 0, 0, 0.2);
+$scoreColor: black;
+$timeColor: black;
+$expandButtonBackgroundColor: orange;
+$expandButtonColor: black;
+
+.SSUI-LiveEvents {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: $fontSize;
+}
+
+.SSUI-LiveEvents-Header {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    position: relative;
+    background-color: $headerBackgrounfColor;
+    padding: 5px 0;
+    box-shadow: $headerShadow;
+}
+
+.SSUI-LiveEvents-Header-Home {
+    width: 40%;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    color: $teamNameColor;
+}
+
+.SSUI-LiveEvents-Header-Data {
+    width: 20%;
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.SSUI-LiveEvents-Header-Data-Score {
+    font-size: 4em;
+    text-align: center;
+    color: $scoreColor;
+}
+
+.SSUI-LiveEvents-Header-Data-Time {
+    font-size: 1.75em;
+    text-align: center;
+    margin-top: 0.1em;
+    color: $timeColor;
+}
+
+.SSUI-LiveEvents-Header-Away {
+    width: 40%;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    color: $teamNameColor;
+}
+
+.SSUI-LiveEvents-Header-Logo {
+    width: 4em;
+    height: auto;
+    margin: 0;
+    align-self: center;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.SSUI-LiveEvents-Header-Text {
+    margin: 0;
+    font-size: 2em;
+}
+
+.SSUI-LiveEvents-List {
+    margin-top: 1em;
+    padding: 0 0.5em;
+    height: 30em;
+    overflow-y: auto;
+}
+
+.SSUI-LiveEvents-List-ExpandCollapse {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: $expandButtonBackgroundColor;
+    color: $expandButtonColor;
+    display: block;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    font-size: 17px;
+    font-weight: bold;
+}
+.SSUI-LiveEvents-List-ExpandCollapse:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1600px) {
+    $fontSize: 10px;
+    .SSUI-LiveEvents {
+        font-size: $fontSize;
+    }
+}
+
+
+@media (max-width: 1100px) {
+    $fontSize: 8px;
+    .SSUI-LiveEvents {
+        font-size: $fontSize;
+    }
+
+}
+
+@media (max-width: 500px) {
+    $fontSize: 7px;
+    .SSUI-LiveEvents {
+        font-size: $fontSize;
+    }
+    .SSUI-LiveEvents-Header-Data-Score {
+        font-size: 2.5em;
+    }
+}
