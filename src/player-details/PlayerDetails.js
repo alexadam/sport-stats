@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react';
-import ReactDOM from 'react-dom';
 require('./PlayerDetails.scss');
 
 const StatsRows = (props) => (

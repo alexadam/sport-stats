@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react';
-import ReactDOM from 'react-dom';
 import STLViewer from './STLViewer';
 
 export default class Field3D extends Component {

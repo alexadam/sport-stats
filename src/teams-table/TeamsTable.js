@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react';
-import Modal from 'react-modal';
 require('./TeamsTable.scss');
 
 const StatInfo = (props) => (

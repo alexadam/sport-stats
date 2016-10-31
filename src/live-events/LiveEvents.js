@@ -1,6 +1,4 @@
 import React, {PropTypes, Component} from 'react';
-import ReactDOM from 'react-dom';
-
 require('./LiveEvents.scss');
 
 export default class LiveEvents extends Component {

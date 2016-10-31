@@ -11,7 +11,7 @@ class STLViewer extends Component {
     shirts = [];
 
     componentDidMount = () => {
-        ReactDOM.findDOMNode(this).addEventListener('mousedown', (e) => {
+        ReactDOM.findDOMNode(this).addEventListener('mousedown', (event) => {
             event.preventDefault();
             let raycaster = new THREE.Raycaster();
             let mouse = new THREE.Vector2();
