@@ -9,20 +9,18 @@ $eventTimeColor: black;
 
 .SSUI-LiveEvent {
     width: 100%;
-    min-height: 4em;
     display: block;
     display: flex;
     flex-flow: row;
     box-sizing: border-box;
     border-bottom: $eventBottomBorder;
     background-color: $eventBackgroundColor;
-    padding: 5px;
+    padding: 8px;
 }
 
 .SSUI-LiveEvent:nth-of-type(2n) {
     background-color: $eventBackgroundColorEven;
 }
-
 
 .SSUI-LiveEvent:nth-of-type(2n+1) {
     background-color: $eventBackgroundColorOdd;
@@ -44,12 +42,12 @@ $eventTimeColor: black;
     display: flex;
     flex-flow: column;
     justify-content: center;
-    margin: 0;
+    margin: 0 8px;
     text-align: center;
 
     img {
         max-width: 30px;
-        width: 2em;
+        width: 1.25em;
         height: auto;
         align-self: center;
     }
@@ -61,7 +59,6 @@ $eventTimeColor: black;
     flex-flow: column;
     justify-content: center;
     margin: 0;
-    font-size: 1.2em;
     vertical-align: middle;
 
     span {
@@ -90,14 +87,12 @@ $eventTimeColor: black;
     display: block;
     margin: 0;
     text-align: center;
-    font-size: 1.2em;
 }
 
 .SSUI-LiveEvent-Text-Button {
     background-color: rgba(0, 0, 0, 0);
     border: none;
     outline: none;
-    font-size: 1.25em;
     cursor: pointer;
     padding: 0;
     color: $playerNameColor;

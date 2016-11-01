@@ -34,15 +34,19 @@ class STLViewer extends Component {
     componentDidUpdate = () => this.init();
 
     applyResize = () => {
-        this.camera.aspect = window.innerWidth / window.innerHeight;
+        let width = document.getElementById('SSUI-Field3D').offsetWidth;
+        let height = document.getElementById('SSUI-Field3D').offsetHeight;
+        this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renderer.setSize(width, height);
         this.renderer.render(this.scene, this.camera);
     }
 
     init = () => {
         let controls = null;
         let component = this;
+        let width = document.getElementById('SSUI-Field3D').offsetWidth;
+        let height = document.getElementById('SSUI-Field3D').offsetHeight;
 
         this.scene = new THREE.Scene();
         let distance = 10000;
@@ -61,13 +65,13 @@ class STLViewer extends Component {
         directionalLight.position.normalize();
         this.scene.add(directionalLight);
 
-        this.camera = new THREE.PerspectiveCamera(30, this.props.width / this.props.height, 1, distance);
-        this.camera.position.set(0, 100, 100);
+        this.camera = new THREE.PerspectiveCamera(30, width/height, 1, distance);
+        this.camera.position.set(0, width / 10, height / 5);
 
         this.scene.add(this.camera);
 
         this.renderer = new THREE.WebGLRenderer({ alpha: true });
-        this.renderer.setSize(this.props.width, this.props.height);
+        this.renderer.setSize(width, height);
         this.renderer.setClearColor(0x000000, 0);
 
         controls = new OrbitControls(this.camera, ReactDOM.findDOMNode(component));
@@ -94,10 +98,6 @@ class STLViewer extends Component {
         let fieldHeight = this.props.field.height;
 
         let halfFieldWidth = fieldWidth / 2;
-        let widthStep1 = halfFieldWidth / this.props.homeTeam.playerPositionById.length;
-        let widthStep2 = halfFieldWidth / this.props.awayTeam.playerPositionById.length;
-        let heightSteps1 = this.props.homeTeam.playerPositionById.map((elem) => parseInt(fieldHeight / (elem.length)));
-        let heightSteps2 = this.props.awayTeam.playerPositionById.map((elem) => parseInt(fieldHeight / (elem.length)));
         let homeTeamPlayerData = this.props.homeTeam.playerPositionById.map((idList)=>idList.map((id)=>this.getPlayerById(id, this.props.homeTeam)));
         let awayTeamPlayerData = this.props.awayTeam.playerPositionById.map((idList)=>idList.map((id)=>this.getPlayerById(id, this.props.awayTeam)));
 
@@ -138,18 +138,22 @@ class STLViewer extends Component {
         img.onload = createMeshThenRender;
         img.src = this.props.field.textureUrl;
 
+        let stepWidth = halfFieldWidth / homeTeamPlayerData.length;
         homeTeamPlayerData.forEach((players, i) => {
+            let stepHeight = fieldHeight / players.length;
             players.forEach((player, j) => {
-                let x = i * widthStep1 + widthStep1/2 - fieldWidth/2;
-                let y = (j * heightSteps1[i]) + heightSteps1[i] / 2 - fieldHeight/2;
+                let x = i * stepWidth + stepWidth/2 - fieldWidth/2;
+                let y = (j * stepHeight) + stepHeight / 2 - fieldHeight/2;
                 this.loadTShirt(player, x, y, true);
             });
         });
 
+        stepWidth = halfFieldWidth / awayTeamPlayerData.length;
         awayTeamPlayerData.forEach((players, i) => {
+            let stepHeight = fieldHeight / players.length;
             players.forEach((player, j) => {
-                let x = fieldWidth - i * widthStep1 - widthStep1/2 - fieldWidth/2;
-                let y = (j * heightSteps1[i]) + heightSteps1[i] / 2 - fieldHeight/2;
+                let x = fieldWidth - i * stepWidth - stepWidth/2 - fieldWidth/2;
+                let y = (j * stepHeight) + stepHeight/2 - fieldHeight / 2;
                 this.loadTShirt(player, x, y, false);
             });
         });
@@ -208,8 +212,8 @@ class STLViewer extends Component {
 
             let texture = new THREE.Texture(mapCanvas);
             texture.needsUpdate = true;
-            let mesh2 = new THREE.Mesh(new THREE.CubeGeometry(5, 5, 0), new THREE.MeshBasicMaterial({ color: '#fff', transparent:true, map: texture }));
-            mesh2.position.set(x, 4, y);
+            let mesh2 = new THREE.Mesh(new THREE.CubeGeometry(8, 8, 0), new THREE.MeshBasicMaterial({ color: '#fff', transparent:true, map: texture }));
+            mesh2.position.set(x, 5, y);
             this.scene.add(mesh2);
 
             mesh2.onPlayerClick = this.props.onPlayerClick.bind(null, playerData);
@@ -275,12 +279,11 @@ class STLViewer extends Component {
         this.scene.add(line);
     }
 
-
     render = () => (
-            <div id="SSUI-Field3D">
+            <div id="SSUI-Field3D" style={{width: '100%', height:'100%'}}>
                   <div style={{
                           textAlign: 'center',
-                          marginTop: this.props.height / 2 - 8
+                          marginTop: 0
                       }}>
                   </div>
             </div>
