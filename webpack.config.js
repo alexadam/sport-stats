@@ -2,6 +2,8 @@ var path = require("path");
 var app_dir = __dirname + '/src';
 var node_dir = __dirname + '/node_modules';
 
+var allConfigs = [];
+
 allConfigs.push(
     {
         entry: './src/index.js',
