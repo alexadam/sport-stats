@@ -29,7 +29,7 @@ export default class Field2D extends Component {
     displayTShirts = () => {
         let perspective = this.props.perspective || true;
 
-        let svg = d3.select('#fieldContainer').append('svg');
+        let svg = d3.select('#SSUI-Field2D').append('svg');
 
         svg.attr({
             viewBox: '0 0 ' +  this.props.field.width + ' ' + this.props.field.height,
@@ -61,6 +61,26 @@ export default class Field2D extends Component {
         };
         let awayTeamYCoord = (playerData, i, j) => (i * heightSteps2[j]) + heightSteps2[j] / 2;
 
+        /// SHADOW Filter
+
+        let defs = svg.append("defs");
+        let filter = defs.append("filter")
+            .attr("id", "dropshadow")
+        filter.append("feGaussianBlur")
+          .attr("in", "SourceAlpha")
+          .attr("stdDeviation", 4)
+          .attr("result", "blur");
+        filter.append("feOffset")
+          .attr("in", "blur")
+          .attr("dx", 0)
+          .attr("dy", 0)
+          .attr("result", "offsetBlur");
+        let feMerge = filter.append("feMerge");
+        feMerge.append("feMergeNode")
+            .attr("in", "offsetBlur")
+        feMerge.append("feMergeNode")
+            .attr("in", "SourceGraphic");
+
         // HOME
 
         let homeGroup = svg.append('g');
@@ -78,7 +98,9 @@ export default class Field2D extends Component {
                 y: homeTeamYCoord,
                 width: '75px',
                 height: '75px',
-                transform: 'translate(10, 35)'
+                transform: 'translate(10, 35)',
+                class: 'SSUI-Field2D-Image',
+                filter: 'url(#dropshadow)'
             })
             .on('click', (playerData, i, j) => this.props.onPlayerClick(playerData));
 
@@ -159,7 +181,8 @@ export default class Field2D extends Component {
                 y: awayTeamYCoord,
                 width: '75px',
                 height: '75px',
-                transform: 'translate(-120, 35)'
+                transform: 'translate(-120, 35)',
+                filter: 'url(#dropshadow)'
             })
             .on('click', (playerData, i, j) => this.props.onPlayerClick(playerData));
 
@@ -226,13 +249,13 @@ export default class Field2D extends Component {
     }
 
     render() {
-        let field = <img
+        let field = <img id="SSUI-Field2D-FieldTexture"
                 width={this.props.field.width} height={this.props.field.hright}
                 style={this.props.perspective === 'true' ? {transform: 'perspective(' + this.props.field.width + 'px) rotateX(45deg)', position: 'absolute'} : {position: 'absolute'}}
                 src={this.props.field.textureUrl} />
 
         return (
-                <div id="fieldContainer" style={{width: this.props.field.width + 'px', height:'auto', left:'0px', position:'relative'}}>
+            <div id="SSUI-Field2D" style={{width: this.props.field.width + 'px', height:'auto', left:'0px', position:'relative'}}>
                 {field}
             </div>
         );

@@ -1,7 +1,6 @@
 
 #svg-field {
     width: 97%;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
 #svg-names {
@@ -11,7 +10,14 @@
     font-weight: bold;
 }
 
-image {
+#SSUI-Field2D {
+}
+
+#SSUI-Field2D-FieldTexture {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.SSUI-Field2D-Image {
     position: absolute;
     display: block;
 }
