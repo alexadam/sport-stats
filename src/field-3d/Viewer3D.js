@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import THREE from 'three';
 let OrbitControls = require('three-orbit-controls')(THREE);
 
-class STLViewer extends Component {
+class Viewer3D extends Component {
     mesh = null;
     renderer = null;
     scene = null;
@@ -15,7 +15,7 @@ class STLViewer extends Component {
             event.preventDefault();
             let raycaster = new THREE.Raycaster();
             let mouse = new THREE.Vector2();
-            let domElement = document.getElementById('SSUI-Field3D');
+            let domElement = ReactDOM.findDOMNode(this);
             mouse.x = ( event.offsetX / domElement.offsetWidth ) * 2 - 1;
             mouse.y = - ( event.offsetY / domElement.offsetHeight ) * 2 + 1;
             raycaster.setFromCamera(mouse, this.camera);
@@ -292,4 +292,4 @@ class STLViewer extends Component {
        );
 };
 
-module.exports = STLViewer;
+module.exports = Viewer3D;
