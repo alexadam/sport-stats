@@ -1,4 +1,5 @@
 import React, {PropTypes, Component} from 'react';
+import ReactDOM from 'react-dom';
 import * as d3 from 'd3';
 require('./Field2D.scss');
 
@@ -29,7 +30,7 @@ export default class Field2D extends Component {
     displayTShirts = () => {
         let perspective = this.props.perspective || true;
 
-        let svg = d3.select('#SSUI-Field2D').append('svg');
+        let svg = d3.select(ReactDOM.findDOMNode(this)).append('svg');
 
         svg.attr({
             viewBox: '0 0 ' +  this.props.field.width + ' ' + this.props.field.height,

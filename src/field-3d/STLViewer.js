@@ -15,14 +15,15 @@ class STLViewer extends Component {
             event.preventDefault();
             let raycaster = new THREE.Raycaster();
             let mouse = new THREE.Vector2();
-             mouse.x = ( event.clientX / this.renderer.domElement.clientWidth ) * 2 - 1;
-             mouse.y = - ( event.clientY / this.renderer.domElement.clientHeight ) * 2 + 1;
-             raycaster.setFromCamera(mouse, this.camera);
-             let intersects = raycaster.intersectObjects(this.shirts);
+            let domElement = document.getElementById('SSUI-Field3D');
+            mouse.x = ( event.offsetX / domElement.offsetWidth ) * 2 - 1;
+            mouse.y = - ( event.offsetY / domElement.offsetHeight ) * 2 + 1;
+            raycaster.setFromCamera(mouse, this.camera);
+            let intersects = raycaster.intersectObjects(this.shirts);
 
-             if (intersects.length > 0) {
-                 intersects[0].object.onPlayerClick();
-             }
+            if (intersects.length > 0) {
+                intersects[0].object.onPlayerClick();
+            }
         }, false);
         this.init();
     }
@@ -34,8 +35,8 @@ class STLViewer extends Component {
     componentDidUpdate = () => this.init();
 
     applyResize = () => {
-        let width = document.getElementById('SSUI-Field3D').offsetWidth;
-        let height = document.getElementById('SSUI-Field3D').offsetHeight;
+        let width = ReactDOM.findDOMNode(this).offsetWidth;
+        let height = ReactDOM.findDOMNode(this).offsetHeight;
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();
         this.renderer.setSize(width, height);
@@ -45,8 +46,8 @@ class STLViewer extends Component {
     init = () => {
         let controls = null;
         let component = this;
-        let width = document.getElementById('SSUI-Field3D').offsetWidth;
-        let height = document.getElementById('SSUI-Field3D').offsetHeight;
+        let width = ReactDOM.findDOMNode(this).offsetWidth;
+        let height = ReactDOM.findDOMNode(this).offsetHeight;
 
         this.scene = new THREE.Scene();
         let distance = 10000;
@@ -66,7 +67,8 @@ class STLViewer extends Component {
         this.scene.add(directionalLight);
 
         this.camera = new THREE.PerspectiveCamera(30, width/height, 1, distance);
-        this.camera.position.set(0, width / 10, height / 5);
+        let fact = width / this.props.field.width;
+        this.camera.position.set(0, 1000 / fact, 1000 / fact);
 
         this.scene.add(this.camera);
 
