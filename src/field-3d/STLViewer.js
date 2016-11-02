@@ -173,7 +173,7 @@ class STLViewer extends Component {
             let tShirtNrStartX = imgWidth - tShirtNrDim;
             let tShirtNrStartY = imgHeight - textHeight - tShirtNrDim;
             let tShirtNrFontSize = 60;
-            let playerNameFontSize = 20;
+            let playerNameFontSize = 30;
             let tShirtNrLeftPadding = playerData.tShirtNr > 9 ? 5 : 20;
 
             if (!isHomeTeam) {
@@ -202,7 +202,7 @@ class STLViewer extends Component {
 
             ctx.fillStyle = 'white';
             ctx.font = playerNameFontSize + 'px Arial';
-            ctx.fillText(playerData.name, 5, tShirtDim + textHeight/2 + 5);
+            ctx.fillText(playerData.name, 5, tShirtDim + textHeight/2 + 10);
 
             // tshirt number
             ctx.fillStyle ='rgba(255,255,255,0.75)';

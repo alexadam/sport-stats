@@ -4,7 +4,7 @@ $eventBackgroundColor: rgba(255, 255, 255, 0);
 $eventBackgroundColorOdd: rgba(255, 255, 255, 0);
 $eventBackgroundColorEven: rgba(255, 255, 255, 0);
 $playerNameColor: rgba(255,255,255,1);
-$eventTimeBackgroundColor: rgba(255, 255, 255, 0.35);
+$eventTimeBackgroundColor: #ccc;
 $eventTimeColor: black;
 
 .SSUI-LiveEvent {
@@ -15,7 +15,7 @@ $eventTimeColor: black;
     box-sizing: border-box;
     border-bottom: $eventBottomBorder;
     background-color: $eventBackgroundColor;
-    padding: 8px;
+    padding: 4px;
 }
 
 .SSUI-LiveEvent:nth-of-type(2n) {

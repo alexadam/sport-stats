@@ -2,12 +2,11 @@
 $fontSize: 14px;
 $textColor: rgba(255,255,255,1);
 $teamNameColor: black;
-$headerBackgrounfColor: #D3D9E5;
-$headerBackgrounfColor: rgba(#D3D9E5, 0.5);
+$headerBackgroundColor: rgba(#ffffff, 0);
 $headerShadow: 0 0 5px 7px rgba(0, 0, 0, 0);
 $scoreColor: black;
 $timeColor: black;
-$expandButtonBackgroundColor: orange;
+$expandButtonBackgroundColor: rgba(#ffffff, 0.15);
 $expandButtonColor: black;
 
 .SSUI-LiveEvents {
@@ -20,7 +19,8 @@ $expandButtonColor: black;
     display: flex;
     flex-flow: row;
     position: relative;
-    background-color: $headerBackgrounfColor;
+    background-color: $headerBackgroundColor;
+    border-bottom: solid 3px #ccc;
     padding: 5px 0;
     box-shadow: $headerShadow;
 }
@@ -86,7 +86,7 @@ $expandButtonColor: black;
 .SSUI-LiveEvents-List {
     margin-top: 1em;
     padding: 0 0.5em;
-    height: 30em;
+    height: 40em;
     overflow-y: auto;
 }
 
