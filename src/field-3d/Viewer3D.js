@@ -230,57 +230,6 @@ class Viewer3D extends Component {
         img.src = playerData.tShirtImgUrl;
     };
 
-    axisHelper = null; //TODO
-
-    // http://www.lab4games.net/zz85/blog/2014/09/08/rendering-lines-and-bezier-curves-in-three-js-and-webgl/
-    addLine = (x0, y0, x1, y1, x2, y2) => {
-        let geometry = new THREE.Geometry();
-        let curve = new THREE.QuadraticBezierCurve3();
-        curve.v0 = new THREE.Vector3(x0, 0,y0);
-        curve.v1 = new THREE.Vector3(x1, 10,y1);
-        curve.v2 = new THREE.Vector3(x2, 2,y2);
-        for (let j = 0; j < 21; j++) {
-           geometry.vertices.push( curve.getPoint(j / 20) )
-        }
-        let material = new THREE.LineBasicMaterial( { color: 0x00ffff, linewidth: 2 } );
-        let line = new THREE.Line(geometry, material);
-        this.scene.add(line);
-
-        if (this.axisHelper === null) {
-            this.axisHelper = new THREE.Object3D();
-        }
-
-        let params = {};
-        params.radius = params.radius || 0.1;
-        params.height = params.height || 7;
-        params.startX  = params.startX  || 0;
-
-        let arrowGeometry = new THREE.CylinderGeometry (0, 2 * params.radius, params.height / 5);
-
-        let yAxisMaterial = new THREE.MeshBasicMaterial ({color: 0xFFFFFF});
-        let yArrowMesh    = new THREE.Mesh (arrowGeometry, yAxisMaterial);
-        let direction = new THREE.Vector3().subVectors( geometry.vertices[19], geometry.vertices[18] );
-        let arrow = new THREE.ArrowHelper( direction, geometry.vertices[18] );
-        yArrowMesh.position.x = geometry.vertices[20].x * 1;
-        yArrowMesh.position.y = geometry.vertices[20].y * 1;
-        yArrowMesh.position.z = geometry.vertices[20].z * 1;
-        yArrowMesh.rotation.x = arrow.rotation.x;
-        yArrowMesh.rotation.y = arrow.rotation.y;
-        yArrowMesh.rotation.z = arrow.rotation.z;
-        this.axisHelper.add (yArrowMesh);
-
-        this.scene.add(this.axisHelper);
-    }
-
-    addLine2 = (x0, y0, x1, y1) => {
-        let geometry = new THREE.Geometry();
-        geometry.vertices.push(new THREE.Vector3(x0, y0, 0));
-        geometry.vertices.push(new THREE.Vector3(x1, y1, 0));
-        let material = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 2 } );
-        let line = new THREE.Line(geometry, material);
-        this.scene.add(line);
-    }
-
     render = () => (
             <div id="SSUI-Field3D" style={{width: '100%', height:'100%'}}>
                   <div style={{
