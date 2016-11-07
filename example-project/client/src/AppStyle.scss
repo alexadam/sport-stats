@@ -1,0 +1,128 @@
+@import url(https://fonts.googleapis.com/css?family=Pontano+Sans);
+
+$fontFamily: 'Pontano Sans', sans-serif;
+$fontSize: 14px;
+$themeColor: #364049;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $fontFamily;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $themeColor;
+    background-color: #364049;
+    background-color: #1E1E1E;
+    background-color: #49474B;
+    font-size: $fontSize;
+}
+
+.app {
+    width: 100%;
+}
+
+.SSUI-LiveEvents-Header {
+    color: white !important;
+    * {
+        color: white !important;
+    }
+}
+.SSUI-LiveEvent-Text > button {
+    font-size: 1em;
+}
+
+.container {
+    display: flex;
+    flex-flow: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.row {
+    height: 1000px;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+}
+
+.column {
+    display: flex;
+    flex-flow: column;
+}
+
+.cell-events {
+    min-width: 30%;
+    margin-top: 100px;
+    padding: 10px;
+}
+
+.cell-field {
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.multi-texture {
+    width: 33%;
+    height: 500px;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 100%;
+        flex-flow: column;
+        flex-wrap: wrap;
+    }
+    .row {
+        width: 100%;
+        flex-flow: column;
+        flex-wrap: wrap;
+        height: auto;
+    }
+    .column {
+        flex-wrap: wrap;
+    }
+    .cell-events {
+        width: 100%;
+    }
+    .cell-field {
+        width: 100%;
+    }
+    .multi-texture {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .container {
+        width: 100%;
+        flex-flow: column;
+        flex-wrap: wrap;
+    }
+    .column {
+        flex-wrap: wrap;
+    }
+    .row {
+        width: 100%;
+        flex-flow: column;
+        flex-wrap: wrap;
+        height: auto;
+    }
+    .cell-events {
+        width: 100%;
+    }
+    .cell-field {
+        width: 100%;
+    }
+    .multi-texture {
+        width: 100%;
+    }
+}
