@@ -1,9 +1,22 @@
 # Sport Stats
 Sport stats UI components
 
-[Demo](https://alexadam.github.io/demos/sport-stats/index.html)
+[Demo](https://alexadam.github.io/demos/sport-stats/)
 
 ![alt ex1.png](https://github.com/alexadam/sport-stats/blob/master/ex-imgs/ex1.png?raw=true)
+
+## How to use
+
+```
+npm install https://github.com/alexadam/sport-stats
+# or downlod/clone this repository
+```
+
+```
+import {LiveEvents, LiveEvent, Field2D, Field3D, PlayerDetails, GameStats, TeamsTable, FieldPlay} from 'sport-stats';
+```
+
+You can find a demo project in the 'example-project' directory.
 
 # Components
 
@@ -83,6 +96,7 @@ soccerField2D = {
 ```
 
 ![alt ex4.png](https://github.com/alexadam/sport-stats/blob/master/ex-imgs/ex4.png?raw=true)
+![alt ex41.png](https://github.com/alexadam/sport-stats/blob/master/ex-imgs/ex41.png?raw=true)
 
 ## Live Events
 
@@ -210,7 +224,7 @@ FPObjects = [
         x: 50,
         y: 30,
         data: {
-            // TODO 
+            // TODO
             id: 1,
             name: 'Away Player 1',
             tShirtImgUrl: '/textures/tshirt9.png',
@@ -250,3 +264,15 @@ FPArrows = [
 ```
 
 ![alt ex8.png](https://github.com/alexadam/sport-stats/blob/master/ex-imgs/ex8.png?raw=true)
+
+## Credits
+Example images from:
+https://pixabay.com
+https://en.wikipedia.org/wiki/File:Icehockeylayout.svg
+https://en.wikipedia.org/wiki/File:Basketball_court_fiba.svg
+https://commons.wikimedia.org/wiki/File:Soccer_Field_Transparant.svg
+
+## TODO
+* problems when resizing the 3d components
+* finish 'FieldPlay' & 'TeamsTable' component
+* more responsive components
