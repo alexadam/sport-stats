@@ -1,7 +1,7 @@
 # Sport Stats
-Sport stats UI components
+Sport stats UI components (react components + three, d3)
 
-[Demo](https://alexadam.github.io/demos/sport-stats/)
+[**Demo**](https://alexadam.github.io/demos/sport-stats/)
 
 ![alt ex1.png](https://github.com/alexadam/sport-stats/blob/master/ex-imgs/ex1.png?raw=true)
 
@@ -267,12 +267,13 @@ FPArrows = [
 
 ## Credits
 Example images from:
-https://pixabay.com
-https://en.wikipedia.org/wiki/File:Icehockeylayout.svg
-https://en.wikipedia.org/wiki/File:Basketball_court_fiba.svg
-https://commons.wikimedia.org/wiki/File:Soccer_Field_Transparant.svg
+ * https://pixabay.com
+ * https://en.wikipedia.org/wiki/File:Icehockeylayout.svg
+ * https://en.wikipedia.org/wiki/File:Basketball_court_fiba.svg
+ * https://commons.wikimedia.org/wiki/File:Soccer_Field_Transparant.svg
 
 ## TODO
-* problems when resizing the 3d components
-* finish 'FieldPlay' & 'TeamsTable' component
-* more responsive components
+ * problems when resizing the 3d components
+ * finish 'FieldPlay' & 'TeamsTable' + add more (ex. heatmaps, graphs etc.)
+ * more responsive components
+ * add a server example with live update
